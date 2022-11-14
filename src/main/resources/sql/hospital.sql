@@ -1,0 +1,1 @@
+SELECT * FROM hospital WHERE road_name_address LIKE '%수원시%' AND business_type_name LIKE '피부과';
