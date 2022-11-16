@@ -2,6 +2,7 @@ package com.mustache.bbsrepeat.domain.entity;
 
 import com.mustache.bbsrepeat.domain.dto.ArticleDto;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -10,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+@Builder
 @Entity
 @NoArgsConstructor
 @Getter
@@ -18,12 +20,7 @@ public class Article {
     @Id
     @GeneratedValue
     private Long id;
-
-
-    @Column
     private String title;
-
-    @Column
     private String contents;
 
     public Article(String title, String contents) {
