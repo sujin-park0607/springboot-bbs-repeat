@@ -11,7 +11,10 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(ArticleRestController.class)
@@ -24,7 +27,7 @@ class ArticleRestControllerTest {
     ArticleService articleService;
 
     @Test
-    @DisplayName("Json형태로 Response가 잘 오는지")
+    @DisplayName("해당 id의 글이 조회가 잘 되는지")
     void jsonResponse() throws Exception{
         Long id = 1l;
 
@@ -37,6 +40,8 @@ class ArticleRestControllerTest {
                 .andExpect(jsonPath("$.title").exists())
                 .andExpect(jsonPath("$.contents").exists())
                 .andDo(print());
+
+        verify(articleService).getArticleById(id);
     }
 
 
