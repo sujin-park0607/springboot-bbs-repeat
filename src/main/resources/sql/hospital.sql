@@ -1,1 +1,2 @@
 SELECT * FROM hospital WHERE road_name_address LIKE '%수원시%' AND business_type_name LIKE '피부과';
+SELECT business_type_name, hospital_name, road_name_address FROM 'likelion-db'.nation_wide_hospitals WHERE business_type_name in ('보건소', '보건지소');
